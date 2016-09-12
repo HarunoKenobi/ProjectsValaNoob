@@ -1,23 +1,30 @@
-int main(string[] args)
-{
-    Gtk.init(ref args);
+public class Aplicacao : Gtk.Window{
+    public Aplicacao()
+    {
+        this.title = "Hello Word!";
+        this.set_border_width(12);
+        this.set_position(Gtk.WindowPosition.CENTER);
+        this.set_default_size(350, 70);
+        this.destroy.connect(Gtk.main_quit);
 
-    var janela = new Gtk.Window();
-    janela.title = "Hello Word!";
-    janela.set_border_width(12);
-    janela.set_position(Gtk.WindowPosition.CENTER);
-    janela.set_default_size(350, 70);
-    janela.destroy.connect(Gtk.main_quit);
+    
+        var botao_hello = new Gtk.Button.with_label("Clique-me!");
+        this.add(botao_hello);
 
-    var botao_hello = new Gtk.Button.with_label("Clique-me!");
-    botao_hello.clicked.connect(() => {
-        botao_hello.label = "Hello Word!";
-        botao_hello.set_sensitive(false);
-    });
+        botao_hello.clicked.connect(() => {
+            botao_hello.label = "Hello Word!";
+            botao_hello.set_sensitive(false);
+        });
+    }
 
-    janela.add(botao_hello);
-    janela.show_all();
+    public static int main(string[] args)
+    {
+        Gtk.init(ref args);
 
-    Gtk.main();
-    return 0;
+        Aplicacao app = new Aplicacao();
+        app.show_all();
+
+        Gtk.main();
+        return 0;
+    }
 }
