@@ -1,0 +1,1 @@
+Para compilar este código, é necessário o comando 'valac --pkg gtk+-3.0 gtk-hello.vala' sem aspas.
